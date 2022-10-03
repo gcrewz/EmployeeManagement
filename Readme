@@ -1,0 +1,25 @@
+Evaluation project
+- It's should have CRUD functionality
+	1. Functionality to Add Employee
+	2. Functionality to Update existing Employee
+	3. Functionality to Delete employee
+	4. Functionality to Read Employee data and populate to a view
+	
+- Solution details:
+	1. MVC project with Views
+		 - All UI actions will call the corresponding endpoint defined in the InternalApiController.
+		 - The Client to server communication should be a AJAX call
+		 - The InternalApiController should not be directly connected to Application layer
+		 - The InternalApiController control should call the corresponding endpoint through HttpClient class object
+		 - This layer should have seperate model classes for each entities
+	2. Web Api Project
+		 - This project will communicate to Application layer
+		 - This layer should have seperate model classes for each entities
+		 
+	3. Application layer project
+		 - This layer will communicate to DataAccess layer
+		 - This layer should have seperate model classes for each entities
+	
+	4. DataAccess layer
+		 - This layer will communicate to Database provider(sql server)
+		 - This layer should have seperate model classes for each entities

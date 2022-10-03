@@ -1,0 +1,43 @@
+﻿@model IEnumerable<EmployeeViewModel>
+
+<h3 class="display-4">Employees</h3>
+<button class="btn btn-success"> Create New Employee</button>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>
+                <b>Id</b>
+            </td>
+            <td>
+                <b>Name</b>
+            </td>
+            <td>
+                <b>Department</b>
+            </td>
+            <td>
+            </td>
+        </tr>
+
+    </thead>
+    @foreach (var employee in Model)
+    {
+        <tr>
+            <td>@employee.Id</td>
+            <td>@employee.Name</td>
+            <td>@employee.Department</td>
+            <td>
+                <button class="btn btn-primary employeeDetails" data-id="@employee.Id"> Details</button>
+                <button class="btn btn-info employeeEdit" data-id="@employee.Id"> Edit</button>
+                <button class="btn btn-danger employeeDelete" data-id="@employee.Id"> Delete</button>
+            </td>
+        </tr>
+    }
+</table>
+
+<div id="EmployeeCard">
+    
+</div>
+
+@section Scripts{
+    <script src="~/js/employee.js"></script>
+}
