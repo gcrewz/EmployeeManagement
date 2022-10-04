@@ -24,17 +24,7 @@ namespace EmployeeManagement.UI.Controllers
             {
                 var employees = _employeeApiClient.GetAllEmployee();
 
-               /* //Dummy Data Need to Replace with employees object
-                var employeeViewModels = new List<EmployeeViewModel>()
-                {
-                    new EmployeeViewModel
-                    {
-                        Id = 1,
-                        Name = "Dummy Name",
-                        Department = "Dummy Department"
-                    }
-                S
-
+                
                 return View(employees);
             }
             catch (Exception)

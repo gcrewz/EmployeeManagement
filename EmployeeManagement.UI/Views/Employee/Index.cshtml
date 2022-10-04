@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<EmployeeViewModel>
 
 <h3 class="display-4">Employees</h3>
-<button class="btn btn-success" data-toggle="modal" data-target="#myModal"> Create New Employee</button>
+<button class="btn btn-success" data-toggle="modal" data-target="#insert"> Create New Employee</button>
 
-<div class="modal fade" id="myModal" role="dialog">
+<div class="modal fade" id="insert" role="dialog">
     <div class="modal-dialog">
         @*Modal content*@
         <div class="modal-content">
@@ -18,10 +18,10 @@
                     <label>Department:</label><br>
                     <input type="text" style="width:100%" id="dept" name="department"><br>
                     <label>Age:</label><br>
-                    <input type="number" style="width:100%" id="age" name="age"><br>
+                    <input type="number" style="width:25%" id="age" name="age"><br>
                     <label>Address:</label><br>
                     <input type="text" style="width:100%" id="address" name="address"><br><br><br>
-                    <input type="submit" value="create">
+                    <input type="submit" value="CREATE"class="btn btn-success">
                 </form>
             </div>
         </div>
@@ -42,7 +42,7 @@
             <div class="modal-body">
                 <form id="updateform">
                     <label>Id:</label><br>
-                    <input type="number" style="width:100%" id="empId" name="id"><br>
+                    <input type="number" style="width:25%" id="empId" name="id"><br>
                     <label>Name:</label><br>
                     <input type="text" style="width:100%" id="empName" name="name"><br>
                     <label>Department:</label><br>
@@ -54,10 +54,10 @@
                         <option value="ACCOUNTING">ACCOUNTING</option>
                     </select>
                     <label>Age:</label><br>
-                    <input type="number" style="width:100%" id="empAge" name="age"><br>
+                    <input type="number" style="width:25%" id="empAge" name="age"><br>
                     <label>Address:</label><br>
                     <input type="text" style="width:100%" id="empAddress" name="address"><br><br><br>
-                    <input type="submit" value="update">
+                    <input type="submit" value="UPDATE" class="btn btn-success">
                 </form>
             </div>
         </div>
