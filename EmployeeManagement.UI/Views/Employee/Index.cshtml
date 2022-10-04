@@ -1,43 +1,108 @@
 ﻿@model IEnumerable<EmployeeViewModel>
 
 <h3 class="display-4">Employees</h3>
-<button class="btn btn-success"> Create New Employee</button>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <td>
-                <b>Id</b>
-            </td>
-            <td>
-                <b>Name</b>
-            </td>
-            <td>
-                <b>Department</b>
-            </td>
-            <td>
-            </td>
-        </tr>
+<button class="btn btn-success" data-toggle="modal" data-target="#myModal"> Create New Employee</button>
 
-    </thead>
-    @foreach (var employee in Model)
-    {
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        @*Modal content*@
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Employee Details</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="createform">
+                    <label>Name:</label><br>
+                    <input type="text" style="width:100%" id="name" name="name"><br>
+                    <label>Department:</label><br>
+                    <input type="text" style="width:100%" id="dept" name="department"><br>
+                    <label>Age:</label><br>
+                    <input type="number" style="width:100%" id="age" name="age"><br>
+                    <label>Address:</label><br>
+                    <input type="text" style="width:100%" id="address" name="address"><br><br><br>
+                    <input type="submit" value="create">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--update employe-->
+
+
+<div class="modal fade" id="Update" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Employee Details</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="updateform">
+                    <label>Id:</label><br>
+                    <input type="number" style="width:100%" id="empId" name="id"><br>
+                    <label>Name:</label><br>
+                    <input type="text" style="width:100%" id="empName" name="name"><br>
+                    <label>Department:</label><br>
+                    <select style="width:100%" name="Department" id="empDept">
+                        <option value="CEO">CEO</option>
+                        <option value="HR">HR</option>
+                        <option value="DEVELOPING">DEVELOPING</option>
+                        <option value="TESTING">TESTING</option>
+                        <option value="ACCOUNTING">ACCOUNTING</option>
+                    </select>
+                    <label>Age:</label><br>
+                    <input type="number" style="width:100%" id="empAge" name="age"><br>
+                    <label>Address:</label><br>
+                    <input type="text" style="width:100%" id="empAddress" name="address"><br><br><br>
+                    <input type="submit" value="update">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <td>
+                                <b>Id</b>
+                            </td>
+                            <td>
+                                <b>Name</b>
+                            </td>
+                            <td>
+                                <b>Department</b>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+
+                    </thead>
+                    @foreach (var employee in Model)
+                    {
         <tr>
             <td>@employee.Id</td>
             <td>@employee.Name</td>
             <td>@employee.Department</td>
             <td>
                 <button class="btn btn-primary employeeDetails" data-id="@employee.Id"> Details</button>
-                <button class="btn btn-info employeeEdit" data-id="@employee.Id"> Edit</button>
+                <button class="btn btn-info employeeEdit" data-id="@employee.Id" data-toggle="modal" data-target="#Update"> Edit</button>
                 <button class="btn btn-danger employeeDelete" data-id="@employee.Id"> Delete</button>
             </td>
         </tr>
-    }
-</table>
-
-<div id="EmployeeCard">
-    
-</div>
-
-@section Scripts{
-    <script src="~/js/employee.js"></script>
 }
+                </table>
+
+                <div id="EmployeeCard">
+
+                </div>
+
+                @section Scripts{
+                    <script src="~/js/employee.js"></script>
+                }

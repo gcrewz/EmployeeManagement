@@ -4,6 +4,7 @@ using EmployeeManagement.UI.Providers.Contracts;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Text;
 
 namespace EmployeeManagement.UI.Providers.ApiClients
 {
@@ -37,6 +38,32 @@ namespace EmployeeManagement.UI.Providers.ApiClients
                 return employeeById;
             }
                        
+        }
+
+        
+        //Insert Employee
+
+        public bool InsertEmployee(EmployeeDetailedViewModel employee)
+        {
+
+            var stringContent = new StringContent(JsonConvert.SerializeObject(employee),Encoding.UTF8, "application/json");
+            using (var response = _httpClient.PostAsync("https://localhost:5001/api/employee/insert",stringContent ).Result)
+            {
+                return true;
+            }
+        }
+
+
+        //Update Employee
+
+        public bool UpdateEmployee(EmployeeDetailedViewModel employee)
+        {
+
+            var stringContent = new StringContent(JsonConvert.SerializeObject(employee), Encoding.UTF8, "application/json");
+            using (var response = _httpClient.PutAsync("https://localhost:5001/api/employee/update", stringContent).Result)
+            {
+                return true;
+            }
         }
 
 

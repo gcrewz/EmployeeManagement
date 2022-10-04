@@ -72,25 +72,19 @@ namespace EmployeeManagement.Application.Services
         }
 
 
-        //Insert Employee without and with mapping
+        //Insert Employee with mapping
+      
 
-        /*public bool  InsertEmployee(EmployeeData employees)
+        public bool InsertEmployee(EmployeeDto employees)
         {
-            var insetEmployee= _employeeRepository.InsertEmployee(employees);
-            return insetEmployee;
-        }*/
-
-
-        public EmployeeDto InsertEmployee(EmployeeData employees)
-        {
-            var insertEmployee = _employeeRepository.InsertEmployee(employees);
-            var employee = MappingInsertEmployee(insertEmployee);
-            return employee;
+            var insertEmployee = _employeeRepository.InsertEmployee(MappingInsertEmployee(employees));
+            return (insertEmployee);
+            
         }
 
-        private EmployeeDto MappingInsertEmployee(EmployeeData insertEmployee)
+        private EmployeeData MappingInsertEmployee(EmployeeDto insertEmployee)
         {
-            var employee = new EmployeeDto()
+            var employee = new EmployeeData()
             {
                
                 Name = insertEmployee.Name,
@@ -103,26 +97,19 @@ namespace EmployeeManagement.Application.Services
         }
 
 
-        //Update Employee without and with mapping
+        //Update Employee with mapping
 
-
-        /*public bool UpdateEmployee(EmployeeData employees)
+      
+        public bool UpdateEmployee(EmployeeDto employees)
         {
-            var updateEmployee = _employeeRepository.UpdateEmployee(employees);
-            return updateEmployee;
-        }
-         */
+            var updateEmployee = _employeeRepository.UpdateEmployee(MappingUpdateEmployee(employees));
 
-        public EmployeeDto UpdateEmployee(EmployeeData employees)
-        {
-            var updateEmployee = _employeeRepository.UpdateEmployee(employees);
-            var employee = MappingUpdateEmployee(updateEmployee);
-            return employee;
+            return (updateEmployee);
         }
 
-        private EmployeeDto MappingUpdateEmployee(EmployeeData updateEmployee)
+        private EmployeeData MappingUpdateEmployee(EmployeeDto updateEmployee)
         {
-            var employee = new EmployeeDto()
+            var employee = new EmployeeData()
             {
                 Id = updateEmployee.Id,
                 Name = updateEmployee.Name,

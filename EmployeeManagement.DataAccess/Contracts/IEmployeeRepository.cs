@@ -9,8 +9,8 @@ namespace EmployeeManagement.DataAccess.Contracts
     {
         IEnumerable<EmployeeData> GetEmployees();
         EmployeeData GetEmployeeById(int id);
-        EmployeeData InsertEmployee(EmployeeData employee);
-        EmployeeData UpdateEmployee(EmployeeData employee);
+        bool InsertEmployee(EmployeeData employee);
+        bool UpdateEmployee(EmployeeData employee);
         bool DeleteEmployee(int employeeId);
     }
 }

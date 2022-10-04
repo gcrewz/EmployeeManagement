@@ -102,26 +102,26 @@ namespace EmployeeManagement.DataAccess.Repository
 
         //INSERT EMPLOYEE 
 
-        public EmployeeData InsertEmployee(EmployeeData employee)
+        public bool InsertEmployee(EmployeeData employee)
         {
             try
             {
                 _sqlConnection.Open();
 
                 SqlCommand sqlCommand = new SqlCommand(cmdText: "Insert into Employee (NAME,DEPARTMENT,AGE,ADDRESS)VALUES (@name, @department, @age, @address)", _sqlConnection);
-
+               
                 sqlCommand.Parameters.AddWithValue("name", employee.Name);
                 sqlCommand.Parameters.AddWithValue("department", employee.Department);
                 sqlCommand.Parameters.AddWithValue("age", employee.Age);
                 sqlCommand.Parameters.AddWithValue("address", employee.Address);
 
                 sqlCommand.ExecuteNonQuery();
-                return employee;
+                return true;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return null;
+                return false;
             }
             finally
             {
@@ -132,7 +132,7 @@ namespace EmployeeManagement.DataAccess.Repository
 
         //UPDATE EMPLOYEE 
 
-        public EmployeeData UpdateEmployee(EmployeeData employee)
+        public bool UpdateEmployee(EmployeeData employee)
         {
             try
             {
@@ -146,12 +146,12 @@ namespace EmployeeManagement.DataAccess.Repository
                 sqlCommand.Parameters.AddWithValue("address", employee.Address);
 
                 sqlCommand.ExecuteNonQuery();
-                return employee;
+                return true;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return null;
+                return false;
             }
             finally
             {

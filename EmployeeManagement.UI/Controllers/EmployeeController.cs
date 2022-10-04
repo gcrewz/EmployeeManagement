@@ -33,7 +33,7 @@ namespace EmployeeManagement.UI.Controllers
                         Name = "Dummy Name",
                         Department = "Dummy Department"
                     }
-                };*/
+                S
 
                 return View(employees);
             }

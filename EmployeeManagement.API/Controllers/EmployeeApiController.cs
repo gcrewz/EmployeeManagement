@@ -58,88 +58,89 @@ namespace EmployeeManagement.API.Controllers
         }
 
 
-       /* private EmployeeDetailedViewModel MapToGetById(EmployeeDto employeeDto)
-        {
-            var employee = new EmployeeDetailedViewModel()
+        /* private EmployeeDetailedViewModel MapToGetById(EmployeeDto employeeDto)
+         {
+             var employee = new EmployeeDetailedViewModel()
 
-            {
-                Id = employeeDto.Id,
-                Name = employeeDto.Name,
-                Age = employeeDto.Age,
-                Department = employeeDto.Department,
-                Address = employeeDto.Address,
-            };
-            return employee;
-        }*/
+             {
+                 Id = employeeDto.Id,
+                 Name = employeeDto.Name,
+                 Age = employeeDto.Age,
+                 Department = employeeDto.Department,
+                 Address = employeeDto.Address,
+             };
+             return employee;
+         }*/
 
 
         //Create Employee Insert, Update and Delete Endpoint 
-
+       
+        
         [HttpPost]
         [Route("insert")]
-        public IActionResult InsertEmployee([FromBody] EmployeeData newEmployee)
+        public IActionResult InsertEmployee([FromBody] EmployeeDetailedViewModel insertEmployee)
         {
             try
             {
-                var employee = _employeeService.InsertEmployee(newEmployee);
-                return Ok(MapToInsertEmployee(employee));
+                var insertion = _employeeService.InsertEmployee(MaptoInsertEMployee(insertEmployee));
+                return Ok(insertion);
             }
             catch (Exception ex)
             {
-             
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
-            
             }
         }
 
 
 
-        private EmployeeDetailedViewModel MapToInsertEmployee(EmployeeDto employeeDto)
+        private EmployeeDto MaptoInsertEMployee(EmployeeDetailedViewModel insertEmployee)
         {
-            var employee = new EmployeeDetailedViewModel()
-
+            var employeeInsertion = new EmployeeDto()
             {
-                Name = employeeDto.Name,
-                Age = employeeDto.Age,
-                Department = employeeDto.Department,
-                Address = employeeDto.Address,                
+                Name = insertEmployee.Name,
+                Age = insertEmployee.Age,
+                Department = insertEmployee.Department,
+                Address = insertEmployee.Address
             };
-                return employee;
+            return employeeInsertion;
         }
 
-
-
+        
+        
         [HttpPut]
         [Route("update")]
-        public IActionResult UpdateEmployee([FromBody] EmployeeData updatedEmployee)
+        public IActionResult UpdateEmployee([FromBody] EmployeeDetailedViewModel updateEmployee)
         {
             try
             {
-                var modifiedEmployee = _employeeService.UpdateEmployee(updatedEmployee);
-                return Ok(MapToUpdateEmployee(modifiedEmployee));
+                var updation = _employeeService.UpdateEmployee(MapToUpdateEmployee(updateEmployee));
+                return Ok(updation);
             }
             catch (Exception ex)
             {
 
-                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
 
+
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
 
 
 
-        private EmployeeDetailedViewModel MapToUpdateEmployee(EmployeeDto modifiedEmployee)
+        private EmployeeDto MapToUpdateEmployee(EmployeeDetailedViewModel updateEmployee)
         {
-            var employee = new EmployeeDetailedViewModel()
+            var employeeUpdation = new EmployeeDto();
             {
-                Name = modifiedEmployee.Name,
-                Age = modifiedEmployee.Age,
-                Department = modifiedEmployee.Department,
-                Address = modifiedEmployee.Address,
+                employeeUpdation.Id = updateEmployee.Id;
+                employeeUpdation.Name = updateEmployee.Name;
+                employeeUpdation.Department = updateEmployee.Department;
+                employeeUpdation.Age = updateEmployee.Age;
+                employeeUpdation.Address = updateEmployee.Address;
             };
-                 return employee;
+            return employeeUpdation;
         }
 
+        
         [HttpDelete]
         [Route("delete/{employeeId}")]
 
