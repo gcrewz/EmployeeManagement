@@ -20,7 +20,7 @@ namespace EmployeeManagement.API.Controllers
         {
             this._employeeService = employeeService;
         }       
-
+        
         [HttpGet]
         [Route("get-all")]
         public IActionResult GetEmployees()
