@@ -9,6 +9,7 @@ a.navbar-brand {
 
 /* Provide sufficient contrast against white background */
 a {
+    background-color:antiquewhite;
   color: #0366d6;
 }
 
