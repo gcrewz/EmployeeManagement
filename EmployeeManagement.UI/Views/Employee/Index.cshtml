@@ -4,7 +4,7 @@
 
 
     <h3 class="display-4"><font face="Proza">EMPLOYEES</font></h3>
-    <button class="btn btn-success" data-toggle="modal" data-target="#insert"> Create New Employee</button>
+    <button class="btn btn-success" data-toggle="modal" data-target="#insert">Create New Employee</button>
 
    
     
@@ -22,6 +22,7 @@
                         <input type="text" style="width:100%" id="name" name="name" required placeholder="Enter The Name" pattern="[A-Za-z\s]{1,15}"><br><br>
                         <label><br><b>Department:</b></label><br>
                         <select style="width:100%" name="Department" required id="dept">
+                            <option value="">--Choose An Option--</option>
                             <option value="CEO">CEO</option>
                             <option value="HR">HR</option>
                             <option value="DEVELOPING">DEVELOPING</option>
@@ -39,6 +40,7 @@
         </div>
     </div>
 </body>
+
 
     <!--update employe-->
 
@@ -58,6 +60,7 @@
                         <input type="text" style="width:100%" id="empName" name="name" required><br>
                         <label><br><b>Department:</b></label><br>
                         <select style="width:100%" name="Department" id="empDept" required>
+                            <option value="">--Choose An Option--</option>
                             <option value="CEO">CEO</option>
                             <option value="HR">HR</option>
                             <option value="DEVELOPING">DEVELOPING</option>
